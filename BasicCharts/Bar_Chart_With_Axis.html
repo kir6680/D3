@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <style>
+    .axis
+    {      
+       stroke:black;
+      fill:none;
+    }
+    
+    .tick text
+    {
+    fill:black;
+    font-size:11px;
+    stroke:black;
+  }
+  </style>
+</head>
+<body>
+
+</body>
+  <script>
+var width = 400; //variable for svg width
+var height = 400; //variable for svg height
+var padding = 50;
+var svg = 
+    d3.select("body")      //select html body tag 
+    .append("svg")        //append svg element
+    .attr({               //syntax for adding multiple
+           width:width,   //properties
+           height:height
+         });
+
+//data
+var salesData = [{year:2010, sales:150}, 
+                 {year:2011, sales:100},
+                 {year:2012, sales:120},
+                 {year:2013, sales:200}];                 
+
+//Scales for x axis
+var xScale = d3.time.scale()
+               .domain([new Date(2009,0,1), new Date(2014,11,31)]) 
+               .range([padding,600-padding])
+               .nice();
+
+//Scales for y axis
+var yScale = d3.scale.linear()
+               .domain([0, 500])
+               .range([height-padding,padding])
+               .nice();
+
+// data() bind data to selection
+// eneter() let you select elements which don't exist yet
+    svg.selectAll("rect")
+    .data(salesData)
+    .enter()   
+    .append("rect")
+        .attr({ 
+              x:function(d,i){return xScale(new Date(d.year,0,1)) - 20;}, //(d,i) => (dataitem, iterator)
+              y:function(d){return height-d.sales-padding;},
+              width:40,
+              height:function(d){return d.sales;},
+              fill:"blue"
+             }); 
+
+//add text to each bar at top middle position.
+  svg.selectAll("text")
+   .data(salesData)
+    .enter()
+    .append("text")
+    .text(function(d){return d.sales;})
+    .attr({
+         "text-anchor":"middle",
+         x : function(d,i){return xScale(new Date(d.year,0,1));},
+         y:function(d){return height -d.sales +15-padding ;},
+         "font-size":"small",
+         "font-weight":"bold"
+         });
+
+ 
+
+//Draw axis
+var yaxis = d3.svg.axis().scale(yScale).orient("left");
+var xaxis = d3.svg.axis().scale(xScale).orient("bottom");
+var yaxis = svg.append("g").call(yaxis)
+               .attr("class","axis")
+              .attr("transform","translate("+padding+",0)");
+var xaxis = svg.append("g").call(xaxis)
+               .attr("class","axis")
+              .attr("transform","translate(0,"+(height-padding)+")");
+
+  </script>
+</html>

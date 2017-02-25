@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+
+</body>
+  <script>
+    var width = 400; //variable for svg width
+var height = 400; //variable for svg height
+
+var svg = 
+    d3.select("body")      //select html body tag 
+    .append("svg")        //append svg element
+    .attr({               //syntax for adding multiple
+           width:width,   //properties
+           height:height
+         });
+
+svg.append("text")
+   .text("D3 is awesome!")
+   .attr("x",100)
+   .attr("y",100);  
+//add this line at end to roate text by 20 degrees.
+//.attr("transform","rotate(20)"); 
+
+  </script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+
+</body>
+  <script>
+    var width = 400; //variable for svg width
+var height = 400; //variable for svg height
+
+var svg = 
+    d3.select("body")      //select html body tag 
+    .append("svg")        //append svg element
+    .attr({               //syntax for adding multiple
+           width:width,   //properties
+           height:height
+         });
+
+//data
+var salesData = [{year:2010, sales:150}, 
+                 {year:2011, sales:100},
+                 {year:2012, sales:120},
+                 {year:2013, sales:200}];                 
+
+// data() bind data to selection
+// eneter() let you select elements which don't exist yet
+    svg.selectAll("rect")
+    .data(salesData)
+    .enter()  
+    .append("rect")
+        .attr({ 
+              x:function(d,i){return 0 + i*60;}, //(d,i) => (dataitem, iterator)
+              y:function(d){return height-d.sales;},
+              width:40,
+              height:function(d){return d.sales;},
+              fill:"blue"
+             }); 
+
+//add text to each bar at top middle position.
+  svg.selectAll("text")
+   .data(salesData)
+    .enter()
+    .append("text")
+    .text(function(d){return d.sales;})
+    .attr({
+         "text-anchor":"middle",
+         x : function(d,i){return 0 + i*60+20;},
+         y:function(d){return height -d.sales +15 ;},
+         "font-size":"small",
+         "font-weight":"bold"
+         });
+
+  </script>
+</html>
