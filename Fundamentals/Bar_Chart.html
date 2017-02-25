@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+
+</body>
+  <script>
+var width = 400; //variable for svg width
+var height = 400; //variable for svg height
+
+var svg = 
+    d3.select("body")      //select html body tag 
+    .append("svg")        //append svg element
+    .attr({               //syntax for adding multiple
+           width:width,   //properties
+           height:height
+
+		   });
+		   
+		   
+//Data for graph		   
+ var salesData = [{year:2010, sales:150},
+                 {year:2011, sales:100},
+                 {year:2012, sales:120},
+                 {year:2013, sales:200}];                 
+
+for(i=0;i<salesData.length;i++)
+  {
+    svg.append("rect")
+        .attr({
+              x:0 + i*20, // separate each bar 20 units
+              y:height-salesData[i].sales,
+              width:10,
+              height:salesData[i].sales, //set height of bar as per sales data
+              fill:"blue"
+             });
+  }
+  </script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+
+</body>
+  <script>
+var width = 400; //variable for svg width
+var height = 400; //variable for svg height
+
+var svg = 
+    d3.select("body")      //select html body tag 
+    .append("svg")        //append svg element
+    .attr({               //syntax for adding multiple
+           width:width,   //properties
+           height:height
+
+		   });
+ // A function to let d3 know how values will be used in drawing 
+// ﻿Coordinates for path
+
+var drawLine = d3.svg.line()
+
+         .x(function(d){return d.x;})
+
+         .y(function(d){return d.y;})
+
+         .interpolate("linear");
+
+
+  // Draw triangle     
+svg.append("path")        
+        .attr({
+                d:drawLine([{x:250,y:200},
+                            {x:300,y:300},
+                            {x:200,y:300},
+                            {x:250,y:200}]), //data 
+                stroke:"black",
+                fill:"none"
+              });
+  </script>
+</html>
