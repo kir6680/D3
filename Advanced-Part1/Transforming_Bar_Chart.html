@@ -1,3 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <style>
+    axis
+    {      
+    fill: none;
+    font-size: 10;
+    font-family: sans-serif;
+    stroke-width: 1px;
+    }    
+   tick, path
+    {      
+    opacity:1;
+    fill:none;
+    font-size: 10;
+    font-family: sans-serif;
+    stroke:black;
+    }
+    text.bar-text
+    {
+       text-anchor:middle;
+       font-size:small;
+       font-weight:bold;
+    }
+    text.axis-label
+    { text-anchor:middle;
+       font-size:large;
+       font-weight:bold;
+    }
+  </style>
+</head>
+<body>
+
+</body>
+  <script>
 var width = 600; //variable for svg width
 var height = 400; //variable for svg height
 var padding = 60;
@@ -16,7 +54,7 @@ var svg =
                  {year:2011, sales:100},
                  {year:2012, sales:120},
                  {year:2013, sales:130},
-                 {year:2014, sales:135}, 
+                 {year:2014, sales:135},
                  {year:2015, sales:110},
                  {year:2016, sales:200}];                 
 
@@ -79,3 +117,5 @@ svg.append('text')
   'class':'axis-label',
   'transform':'translate('+(padding/4)+','+(height/2)+') rotate(-90)'
 });
+  </script>
+</html>
