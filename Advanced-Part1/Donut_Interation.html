@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+  
+<body>
+
+</body>
+  <script>
+   var h = 1000;
+var w = 1000;
+var data =[{product:"A",quantity:100},
+          {product:"B", quantity:407},
+          {product:"C", quantity:208},
+          {product:"D", quantity:190},
+          {product:"E", quantity:500},
+          {product:"F", quantity:800}];
+
+
+
+var svg = d3.select("body") 
+    .append("svg") 
+    .attr("width", w)
+    .attr("height", h);
+
+var color = d3.scale.category20c(); 
+
+var arc = d3.svg.arc() 
+    .innerRadius(55) 
+    .outerRadius(120);  
+
+var pie = d3.layout.pie()
+    .sort(null)
+    .value(function(d) {return d.quantity; });
+
+var g = svg.selectAll("arc")
+      .data(pie(data))
+      .enter() 
+      .append("g")      
+      .attr("transform", "translate(200,200)")
+     
+//mouseover and mouseout event
+     .on('mouseover',function(d){
+     
+       var arc = d3.select(this) //select the current element
+                   .transition()
+                   .duration(500);
+       arc.attr('transform','translate(200,200) scale(1.5)');
+     })
+      .on('mouseout',function(d){
+     
+       var arc = d3.select(this) //select the current element
+                   .transition()
+                   .duration(500);
+       arc.attr('transform','translate(200,200) scale(1)');
+     });
+
+
+
+g.append("path") 
+     .attr("d", arc)
+     .style("fill", function(d) { return color(d.data.quantity); });
+
+g.append("text")
+      .attr("transform", function(d) { return "translate(" + arc.centroid(d)+")"; })     
+      .attr("dx",-10)       
+      .text(function(d) { return d.data.product; });
+
+ 
+</script>
+</html>
