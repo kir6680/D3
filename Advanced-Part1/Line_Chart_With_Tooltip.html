@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+
+  <style>
+  axis
+    {      
+    fill: none;
+    font-size: 10;
+    font-family: sans-serif;     
+    }    
+    path
+    {      
+    opacity:1;
+    fill:none;
+    font-size: 10;
+    font-family: sans-serif;
+    stroke:black;
+    }
+    .curve
+    {
+     opacity:1;
+    fill:none;
+    stroke:red;
+      stroke-width:4;
+    }
+    text.bar-text
+    {
+       text-anchor:middle;
+       font-size:small;
+       font-weight:bold;
+    }
+    text.axis-label
+    { text-anchor:middle;
+       font-size:large;
+       font-weight:bold;
+    }
+   </style>
+<body>
+
+</body>
+ <script>
+   var data =[
+          {date:"01/10/2012",sales:10},
+          {date:"05/10/2012",sales:24},
+          {date:"04/10/2013",sales:34},
+          {date:"05/10/2014",sales:55},
+          {date:"07/10/2014",sales:59},
+          {date:"03/10/2015",sales:70},
+          {date:"05/10/2016",sales:65},
+          {date:"05/10/2017",sales:46}];
+
+var padding = 40;
+var height = 600;
+var width = 600;
+
+var scaley= d3.scale.linear()
+              .domain([0,100])
+              .range([height-padding,padding]);
+ 
+var scalex = d3.time.scale()
+              .domain([new Date(2012,0,1),new Date(2017,11,31)])
+              .range([padding,600-padding]); 
+
+
+var xaxis = d3.svg.axis().scale(scalex).orient("bottom");
+
+ 
+var yaxis = d3.svg.axis().scale(scaley).orient("left");
+
+ 
+var svg = d3.select("body")
+            .append("svg") 
+            .attr("width",600)  
+            .attr("height",600);
+var yaxis = svg.append("g").call(yaxis)
+               .attr("class","axis")
+              .attr("transform","translate("+(padding)+",0)");
+var xaxis = svg.append("g").call(xaxis) 
+               .attr("class","axis")
+              .attr("transform","translate(0,"+(height-padding)+")");
+
+ var formatTime = d3.time.format("%b, %Y"); 
+var formatSales = d3.format(".3n");
+  
+var line = d3.svg.line() 
+             .x(function(d){return scalex(new Date(d.date));})   
+             .y(function(d){return scaley(d.sales);});
+             
+ 
+var path = svg
+   .append('path')
+   .attr("d",line(data))
+   .attr("class","curve")
+   .attr("fill","none")
+  .on("mouseover",handleMouseIn)
+  .on("mouseout",handleMouseOut); 
+
+
+function handleMouseIn(d)
+{ 
+  var point = {year:scalex.invert(d3.mouse(this)[0]), sales:scaley.invert(d3.mouse(this)[1])};
+  //console.log(point);
+  svg.append("text")
+     .attr('id','tooltip')
+     .text(formatTime(point.year) +' ('+ formatSales(point.sales)+')')
+     .attr({
+      'x':d3.mouse(this)[0],
+      'y':d3.mouse(this)[1],
+      'dx':-10,
+      'dy':-20
+  });
+       
+} 
+ 
+
+function handleMouseOut(d)
+{
+  svg.selectAll("#tooltip").remove();
+      
+}
+
+
+
+
+
+  </script>
+</html>
