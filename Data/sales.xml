@@ -1,0 +1,26 @@
+<YearSale>
+	<Sale>
+		<Year>2011</Year>
+		<Sales>100</Sales>
+	</Sale>
+	<Sale>
+		<Year>2012</Year>
+		<Sales>120</Sales>
+	</Sale>
+	<Sale>
+		<Year>2013</Year>
+		<Sales>130</Sales>
+	</Sale>
+	<Sale>
+		<Year>2014</Year>
+		<Sales>135</Sales>
+	</Sale>
+	<Sale>
+		<Year>2015</Year>
+		<Sales>110</Sales>
+	</Sale>
+	<Sale>
+		<Year>2016</Year>
+		<Sales>200</Sales>
+	</Sale>
+</YearSale>
