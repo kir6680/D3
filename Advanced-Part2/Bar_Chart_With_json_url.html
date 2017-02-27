@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+    <style>
+    .axis
+    {      
+       stroke:black;
+      fill:none;
+    }
+    
+    .tick text
+    {
+    fill:black;
+    font-size:11px;
+    stroke:black;
+  }
+  </style>
+</head>
+<body>
+</body>
+  <script>
+    var width = 600; //variable for svg width
+var height = 400; //variable for svg height
+var padding = 40;
+
+    
+//Get json file data from URL.
+d3.json("https://raw.githubusercontent.com/kir6680/D3/master/Data/sales.json",  
+       function(error, data) {
+  if (error) throw error;	 // throw for any error.
+ 
+
+var svg = 
+    d3.select("body")      //select html body tag 
+    .append("svg")        //append svg element
+    .attr({               //syntax for adding multiple
+           width:width,   //properties
+           height:height
+         });
+
+var xScale = d3.time.scale()
+               .domain([new Date(2010,0,1), new Date(2016,11,31)]) 
+               .range([padding,600-padding])
+               .nice();
+//Scales for y axis
+var yScale = d3.scale.linear()
+               .domain([0, 500])
+               .range([height-padding,padding])
+               .nice();
+// data() bind data to selection
+// eneter() let you select elements which don't exist yet
+    svg.selectAll("rect")
+    .data(data)
+    .enter()   
+    .append("rect")
+        .attr({ 
+              x:function(d,i){return xScale(new Date(d.Year,0,1)) - 20;},
+              y:function(d){return height-d.Sales-padding;},
+              width:40,
+              height:function(d){return d.Sales;},
+              fill:"blue"
+             }); 
+//add text to each bar at top middle position.
+  svg.selectAll("text")
+   .data(data)
+    .enter()
+    .append("text")
+    .text(function(d){return d.Sales;})
+    .attr({
+         "text-anchor":"middle",
+         x : function(d,i){return xScale(new Date(d.Year,0,1));},
+         y:function(d){return height -d.Sales +15-padding ;},
+         "font-size":"small",
+         "font-weight":"bold"
+         });
+ 
+//Draw axis
+var yaxis = d3.svg.axis().scale(yScale).orient("left");
+var xaxis = d3.svg.axis().scale(xScale).orient("bottom");
+var yaxis = svg.append("g").call(yaxis)
+               .attr("class","axis")
+              .attr("transform","translate("+padding+",0)");
+var xaxis = svg.append("g").call(xaxis)
+               .attr("class","axis")
+              .attr("transform","translate(0,"+(height-padding)+")");
+});
+</script>
+</html>
