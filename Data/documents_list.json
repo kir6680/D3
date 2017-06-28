@@ -1,0 +1,26 @@
+[{
+		"DisplayName" : "FON_test",
+		"Category" : "Prospectus / Offering Circular",
+		"PublicationDate" : "Feb 06",
+		"SubmissionTimestamp" : "11-Dec-2014 10:10:41 CET",
+		"DownloadUrl" : "Deal/DownloadDealDocument/RMBSPT000001125420009?fileName=GCAT06_T_0914_RMBSPT000001125420009_20141211101041.pdf"
+	}, {
+		"DisplayName" : "test2",
+		"Category" : "Closing Transaction Document",
+		"PublicationDate" : "Jun 10",
+		"SubmissionTimestamp" : "11-Dec-2014 10:33:39 CET",
+		"DownloadUrl" : "Deal/DownloadDealDocument/RMBSPT000001125420009?fileName=GCAT06_T_0914_RMBSPT000001125420009_20141211101041.pdf"
+	}, {
+		"DisplayName" : "eeee",
+		"Category" : "Transaction Summary",
+		"PublicationDate" : "Apr 12",
+		"SubmissionTimestamp" : "11-Dec-2014 11:02:22 CET",
+		"DownloadUrl" : "Deal/DownloadDealDocument/RMBSPT000001125420009?fileName=GCAT06_T_0914_RMBSPT000001125420009_20141211101041.pdf"
+	}, {
+		"DisplayName" : "tzzzz",
+		"Category" : "Issuer's Website",
+		"PublicationDate" : "Apr 97",
+		"SubmissionTimestamp" : "11-Dec-2014 11:37:56 CET",
+		"DownloadUrl" : "Deal/DownloadDealDocument/RMBSPT000001125420009?fileName=GCAT06_T_0914_RMBSPT000001125420009_20141211101041.pdf"
+	}
+]
