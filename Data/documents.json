@@ -1,18 +1,26 @@
 [{
-		"Name" : "AUTSNL000427100220143_f70be322-f62c-4cbb-b9a4-624af42a2fa5.xml",
-		"Size" : 5620,
-		"LastModifiedDate" : "23-Jun-17 12:14:00 PM"
+		"DisplayName" : "FON_test",
+		"Category" : "Prospectus / Offering Circular",
+		"PublicationDate" : "Feb 06",
+		"SubmissionTimestamp":"11-Dec-2014 10:10:41 CET",
+		"DownloadUrl":"Deal/DownloadDealDocument/RMBSPT000001125420009?fileName=GCAT06_T_0914_RMBSPT000001125420009_20141211101041.pdf"
 	}, {
-		"Name" : "EDQC_DEV_SONAR.xml",
-		"Size" : 11513,
-		"LastModifiedDate" : "23-Jun-17 4:57:24 PM"
+		"DisplayName" : "test2",
+		"Category" : "Closing Transaction Document",
+		"PublicationDate" : "Jun 10",
+		"SubmissionTimestamp":"11-Dec-2014 10:33:39 CET",
+		"DownloadUrl":"Deal/DownloadDealDocument/RMBSPT000001125420009?fileName=GCAT06_T_0914_RMBSPT000001125420009_20141211101041.pdf"
 	}, {
-		"Name" : "shot2.PNG",
-		"Size" : 11988,
-		"LastModifiedDate" : "23-Jun-17 4:57:17 PM"
+		"DisplayName" : "eeee",
+		"Category" : "Transaction Summary",
+		"PublicationDate" : "Apr 12",
+		"SubmissionTimestamp":"11-Dec-2014 11:02:22 CET",
+		"DownloadUrl":"Deal/DownloadDealDocument/RMBSPT000001125420009?fileName=GCAT06_T_0914_RMBSPT000001125420009_20141211101041.pdf"
 	}, {
-		"Name" : "working_open_cover_cmd.txt",
-		"Size" : 865,
-		"LastModifiedDate" : "23-Jun-17 4:58:31 PM"
-	}
+		"DisplayName" : "tzzzz",
+		"Category" : "Issuer's Website",
+		"PublicationDate" : "Apr 97",
+		"SubmissionTimestamp":"11-Dec-2014 11:37:56 CET",
+		"DownloadUrl":"Deal/DownloadDealDocument/RMBSPT000001125420009?fileName=GCAT06_T_0914_RMBSPT000001125420009_20141211101041.pdf"
+	}, 
 ]
